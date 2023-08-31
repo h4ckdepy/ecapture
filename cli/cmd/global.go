@@ -41,7 +41,7 @@ func getGlobalConf(command *cobra.Command) (conf GlobalFlags, err error) {
 		return
 	}
 
-	conf.Burp, err = command.Flags().GetUint64("burp")
+	conf.Burp, err = command.Flags().GetBool("burp")
 	if err != nil {
 		return
 	}
