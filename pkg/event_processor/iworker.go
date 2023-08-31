@@ -18,6 +18,8 @@ import (
 	"bytes"
 	"ecapture/user/event"
 	"encoding/hex"
+	"fmt"
+	"os"
 	"strings"
 	"time"
 )
@@ -97,8 +99,16 @@ func (ew *eventWorker) Display() {
 	// TODO 格式化的终端输出
 	// 重置状态
 	//ew.processor.GetLogger().Printf("UUID:%s, Name:%s, Type:%d, Length:%d", ew.UUID, ew.parser.Name(), ew.parser.ParserType(), len(b))
-	if strings.HasPrefix(string(b), "GET") || strings.HasPrefix(string(b), "POST") {
-		ew.processor.GetLogger().Println("\n打印请求:\n" + string(b))
+
+	for _, arg := range os.Args {
+		if arg == "--burp" {
+			fmt.Println("Found --burp command line argument")
+			if strings.HasPrefix(string(b), "GET") || strings.HasPrefix(string(b), "POST") {
+				ew.processor.GetLogger().Println("\n打印请求:\n" + string(b))
+			}
+		} else {
+			ew.processor.GetLogger().Println("\n" + string(b))
+		}
 	}
 
 	//ew.parser.Reset()
