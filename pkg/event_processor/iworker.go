@@ -96,7 +96,7 @@ func (ew *eventWorker) Display() {
 	// TODO 格式化的终端输出
 	// 重置状态
 	//ew.processor.GetLogger().Printf("UUID:%s, Name:%s, Type:%d, Length:%d", ew.UUID, ew.parser.Name(), ew.parser.ParserType(), len(b))
-	ew.processor.GetLogger().Println("\ndepy capture test" + string(b))
+	ew.processor.GetLogger().Println("\ndepycapture test" + string(b))
 	//ew.parser.Reset()
 	// 设定状态、重置包类型
 	ew.status = ProcessStateInit
