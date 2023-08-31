@@ -27,6 +27,7 @@ type GlobalFlags struct {
 	Uid        uint64 // UID
 	NoSearch   bool   // No lib search
 	loggerFile string // save file
+	Burp       bool   //use burpsuite
 }
 
 func getGlobalConf(command *cobra.Command) (conf GlobalFlags, err error) {
@@ -36,6 +37,11 @@ func getGlobalConf(command *cobra.Command) (conf GlobalFlags, err error) {
 	}
 
 	conf.Uid, err = command.Flags().GetUint64("uid")
+	if err != nil {
+		return
+	}
+
+	conf.Burp, err = command.Flags().GetUint64("burp")
 	if err != nil {
 		return
 	}
