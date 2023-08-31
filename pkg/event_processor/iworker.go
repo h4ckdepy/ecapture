@@ -108,9 +108,9 @@ func (ew *eventWorker) Display() {
 	}
 
 	if burpFlag {
-		fmt.Println("Found --burp command line argument")
+		fmt.Println("burp转发开始")
 		if strings.HasPrefix(string(b), "GET") || strings.HasPrefix(string(b), "POST") {
-			ew.processor.GetLogger().Println("\n打印请求:\n" + string(b))
+			ew.processor.GetLogger().Println("\n打印请求包:\n" + string(b))
 		}
 	} else {
 		ew.processor.GetLogger().Printf("UUID:%s, Name:%s, Type:%d, Length:%d", ew.UUID, ew.parser.Name(), ew.parser.ParserType(), len(b))
